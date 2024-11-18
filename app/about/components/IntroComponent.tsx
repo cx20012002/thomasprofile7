@@ -53,7 +53,7 @@ export default function IntroComponent() {
     { scope: containerRef, dependencies: [] },
   );
   return (
-    <section ref={containerRef} className="relative flex w-full flex-col items-center justify-center pb-[30px] text-primary md:pb-0">
+    <section ref={containerRef} className="relative flex h-fit w-full flex-col items-center justify-center pb-[30px] text-primary md:pb-0">
       {/* Intro Text */}
       <div className="intro-text sticky top-0 flex h-screen w-full max-w-[700px] items-center justify-center px-5 md:px-10">
         <p className="text-center font-Inter text-[24px] font-[200] leading-[1.3] text-[#ffffff80] md:text-[32px]">
@@ -74,7 +74,7 @@ export default function IntroComponent() {
               alt={`about-slide${index + 1}`}
               width={500}
               height={500}
-              className="absolute inset-0 h-full w-full object-cover opacity-0 intro-image"
+              className="intro-image absolute inset-0 h-full w-full object-cover opacity-0"
             />
           ))}
         </div>
