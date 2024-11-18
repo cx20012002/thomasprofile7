@@ -5,6 +5,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #faf5ea;
+  --orange: #ff6017;
+  --darkGrey: #ffffff1a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,4 +21,44 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+
+  transition-property: opacity, transform, filter, background;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms;
+}
+
+.page-transition {
+  opacity: 0;
+  background: black;
+  transform: translateY(40px);
+  filter: blur(12px);
+}
+
+@layer base {
+  .title {
+    @apply font-ClashDisplay text-[66px] font-thin leading-[80%] tracking-[-0.06em] md:text-[100px] xl:text-[157px];
+  }
+
+  .subtitle {
+    @apply font-ClashDisplay text-[50px] font-thin leading-[80%] -tracking-[0.04em] md:text-[90px] xl:text-[120px];
+  }
+
+  .summary {
+    @apply font-ClashDisplay text-[19px] font-thin md:text-[26px];
+  }
+
+  .summary2 {
+    @apply text-[28px] leading-[1.2em] tracking-[-0.06em] md:text-[32px] xl:w-[700px] xl:max-w-[700px] xl:text-[38px] font-Inter;
+  }
+
+  .bodyText {
+    @apply font-Inter text-[17px] text-[#bababa];
+  }
+
+  .singleBlog p {
+    @apply text-[17px] text-[#bababa] py-5;
+  }
+  .singleBlog h4 {
+    @apply font-ClashDisplay text-[20px] text-white py-2;
+  }
 }
