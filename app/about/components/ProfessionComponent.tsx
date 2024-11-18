@@ -1,5 +1,4 @@
-import { useGSAP } from "@gsap/react";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -8,24 +7,26 @@ const signBoardTexts = ["Creative Vision", "Professionalism", "Passion", "Adapta
 export default function ProfessionComponent() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(
-    () => {
-      const signBoards = containerRef.current?.querySelectorAll(".sign-board");
+  useEffect(() => {
+    const signBoards = containerRef.current?.querySelectorAll(".sign-board");
 
-      signBoards?.forEach((signBoard, index) => {
-        ScrollTrigger.create({
-          trigger: signBoard,
-          start: "top center",
-          end: "bottom top",
-          scrub: 1,
-          animation: gsap.to(signBoard, {
-            rotate: index % 2 === 0 ? 10 : -10,
-          }),
-        });
+    signBoards?.forEach((signBoard, index) => {
+      ScrollTrigger.create({
+        trigger: signBoard,
+        start: "top center",
+        end: "bottom top",
+        scrub: 1,
+        markers: true,
+        animation: gsap.to(signBoard, {
+          rotate: index % 2 === 0 ? 10 : -10,
+        }),
       });
-    },
-    { scope: containerRef, dependencies: [] },
-  );
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   return (
     <section
