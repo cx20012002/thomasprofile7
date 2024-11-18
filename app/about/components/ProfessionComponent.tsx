@@ -16,7 +16,6 @@ export default function ProfessionComponent() {
         start: "top center",
         end: "bottom top",
         scrub: 1,
-        markers: true,
         animation: gsap.to(signBoard, {
           rotate: index % 2 === 0 ? 10 : -10,
         }),
